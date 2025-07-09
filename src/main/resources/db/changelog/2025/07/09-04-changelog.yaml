@@ -1,0 +1,63 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1752075845458-4
+      author: Gronvolt
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: sender_username
+                  type: VARCHAR(255)
+            tableName: messages
+  - changeSet:
+      id: 1752075845458-5
+      author: Gronvolt
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - update:
+            tableName: messages
+            columns:
+              - column:
+                  name: sender_username
+                  value: "UNKNOWN"
+  - changeSet:
+      id: 1752075845458-6
+      author: Gronvolt
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addNotNullConstraint:
+            columnDataType: VARCHAR(255)
+            columnName: sender_username
+            tableName: messages
+  - changeSet:
+      id: 1752075845458-1
+      author: Gronvolt
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addNotNullConstraint:
+            columnDataType: DATETIME
+            columnName: created_at
+            tableName: messages
+            validate: true
+  - changeSet:
+      id: 1752075845458-2
+      author: Gronvolt
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addNotNullConstraint:
+            columnDataType: VARCHAR(255)
+            columnName: message
+            tableName: messages
+            validate: true
+  - changeSet:
+      id: 1752075845458-3
+      author: Gronvolt
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addNotNullConstraint:
+            columnDataType: binary(16)
+            columnName: sender_id
+            tableName: messages
+            validate: true
+

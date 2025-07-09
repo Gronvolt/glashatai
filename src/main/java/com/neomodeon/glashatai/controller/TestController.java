@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/v1/test")
 public class TestController {
 
+    /*
+     *Защищенный эндпоинт для проверки авторизации через Гридень
+     */
     @GetMapping
     public ResponseEntity<String> test(Authentication authentication) {
         return ResponseEntity.ok(authentication.getName());

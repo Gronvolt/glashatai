@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1752068744022-1
+      author: Gronvolt
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_messages
+                  name: uuid
+                  type: binary(16)
+              - column:
+                  name: message
+                  type: VARCHAR(255)
+              - column:
+                  name: created_at
+                  type: DATETIME
+            tableName: messages
+
