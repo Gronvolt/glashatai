@@ -5,6 +5,7 @@ import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
@@ -40,6 +41,10 @@ public class JwtService {
 
     public UUID extractUuid(String token) {
         return UUID.fromString(extractClaims(token).get("userUuid", String.class));
+    }
+
+    public UUID extractUuid(Authentication authentication) {
+        return (UUID) authentication.getCredentials();
     }
 
     private Claims extractClaims(String token) {
