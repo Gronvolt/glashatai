@@ -19,7 +19,7 @@ public class Message {
     @Id
     @GeneratedValue
     @UuidGenerator
-    @Column(name = "uuid", unique = true)
+    @Column(name = "uuid", nullable = false, unique = true, updatable = false)
     private UUID uuid;
 
     @Column(name = "sender_id", nullable = false)
@@ -33,6 +33,10 @@ public class Message {
 
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
+
+    @JoinColumn(name = "chat_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Chat chat = new Chat();
 
     @PrePersist
     protected void onCreate() {
